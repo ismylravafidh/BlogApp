@@ -7,6 +7,7 @@ using BlogApp.DAL.Context;
 using BlogApp.DAL.Repository.Implimentations;
 using BlogApp.DAL.Repository.Interfaces;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -15,8 +16,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+{
+    opt.Password.RequiredLength = 8;
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._";
+    opt.Lockout.MaxFailedAccessAttempts = 2;
+    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(4);
+}).AddEntityFrameworkStores<BlogAppDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddControllers().AddFluentValidation(opt =>
 {

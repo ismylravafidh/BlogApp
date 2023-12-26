@@ -27,7 +27,8 @@ namespace BlogApp.Business.Service.Implimentations
         {
             _repository = repository;
             _mapper = mapper;
-            _env = @"C:\Users\User\Desktop\project.cs\BlogApp.API\BlogApp.API\wwwroot\";
+            _env = @"C:\Users\II novbe\source\repos\BlogApp\BlogApp.API\wwwroot\";
+            
         }
 
         public async Task<IQueryable<Category>> GetAllAsync()

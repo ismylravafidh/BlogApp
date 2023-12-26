@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BlogApp.Business.DTOs.CategoryDTOs;
+using BlogApp.Business.DTOs.UserDtos;
 using BlogApp.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,10 @@ namespace BlogApp.Business.Mapper
         {
             CreateMap<Category,CategoryCreateDto>();
             CreateMap<CategoryCreateDto,Category>();
+
+
+            CreateMap<RegisterDto,AppUser>();
+            CreateMap<RegisterDto,AppUser>().ReverseMap();
         }
     }
 }

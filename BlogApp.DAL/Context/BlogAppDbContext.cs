@@ -1,4 +1,5 @@
 ﻿using BlogApp.Core.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,16 +10,12 @@ using System.Threading.Tasks;
 
 namespace BlogApp.DAL.Context
 {
-    public class BlogAppDbContext : DbContext
+    public class BlogAppDbContext : IdentityDbContext<AppUser>
     {
         public BlogAppDbContext(DbContextOptions<BlogAppDbContext> options) : base(options)
         {
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            base.OnModelCreating(modelBuilder);
-        }
+       
         public DbSet<Category> Categories { get; set; }
     }
 }
