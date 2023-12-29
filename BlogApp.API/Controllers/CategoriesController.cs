@@ -1,6 +1,7 @@
 ﻿using BlogApp.Business.DTOs.CategoryDTOs;
 using BlogApp.Business.Service.Interfaces;
 using BlogApp.Core.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace BlogApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CategoriesController : ControllerBase
     {
         ICategoryService _service;

@@ -10,5 +10,6 @@ namespace BlogApp.Business.Service.Interfaces
     public interface IUserService
     {
         Task Register(RegisterDto registerDto);
+        Task<TokenDto> Login(LoginDto loginDto);
     }
 }

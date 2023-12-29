@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogApp.DAL.Migrations
 {
     [DbContext(typeof(BlogAppDbContext))]
-    [Migration("20231226125834_vgzsdxfh")]
-    partial class vgzsdxfh
+    [Migration("20231229230008_smy")]
+    partial class smy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
