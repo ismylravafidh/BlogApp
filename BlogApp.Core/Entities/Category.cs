@@ -13,5 +13,6 @@ namespace BlogApp.Core.Entities
     {
         public string? Name { get; set; }
         public string? LogoUrl { get; set; }
+        public List<Blog> Blogs { get; set; }
     }
 }

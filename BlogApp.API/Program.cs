@@ -1,3 +1,4 @@
+using BlogApp.Business;
 using BlogApp.Business.DTOs.CategoryDTOs;
 using BlogApp.Business.ExternalServices.Implimentations;
 using BlogApp.Business.ExternalServices.Interfaces;
@@ -20,10 +21,6 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
@@ -98,7 +95,8 @@ builder.Services.AddSwaggerGen(opt =>
     });
 });
 
-
+builder.Services.AddServices();
+builder.Services.AddRepositories();
 builder.Services.AddDbContext<BlogAppDbContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
